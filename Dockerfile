@@ -7,7 +7,8 @@ USER root
 RUN apt-get update && apt-get install -y php
 
 ADD https://getcomposer.org/installer /tmp/install-composer.php
-RUN php /tmp/install-composer.php --no-ansi --install-dir=/usr/local/bin --filename=composer
+RUN php /tmp/install-composer.php --no-ansi --install-dir=/usr/bin --filename=composer
+RUN composer --ansi --version --no-interaction
 RUN rm /tmp/install-composer.php
 
 # drop back to the regular jenkins user - good practice
