@@ -6,6 +6,9 @@ LABEL maintainer="Antoine Monnier"
 USER root
 RUN apt-get update && apt-get install -y php
 
+COPY install-composer.sh /usr/local/bin/install-composer.sh
+RUN /usr/local/bin/install-composer.sh
+
 # drop back to the regular jenkins user - good practice
 USER jenkins
 
