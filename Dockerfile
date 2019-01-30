@@ -3,11 +3,11 @@ FROM jenkins/jenkins:lts
 LABEL maintainer="Antoine Monnier"
 
 # if we want to install via apt
-#USER root
-#RUN apt-get update && apt-get install -y ruby and-other-stuff
+USER root
+RUN apt-get update && apt-get install -y php
 
 # drop back to the regular jenkins user - good practice
-#USER jenkins
+USER jenkins
 
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
