@@ -4,6 +4,8 @@ LABEL maintainer="Antoine Monnier"
 
 # if we want to install via apt
 USER root
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update && apt-get install -y php7.2
 
 ADD https://getcomposer.org/installer /tmp/install-composer.php
