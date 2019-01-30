@@ -4,7 +4,7 @@ LABEL maintainer="Antoine Monnier"
 
 # if we want to install via apt
 USER root
-RUN apt-get update && apt-get install -y php7.3
+RUN apt-get update && apt-get install -y php7.2
 
 ADD https://getcomposer.org/installer /tmp/install-composer.php
 RUN php /tmp/install-composer.php --no-ansi --install-dir=/usr/bin --filename=composer
