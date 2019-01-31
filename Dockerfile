@@ -4,7 +4,10 @@ LABEL maintainer="Antoine Monnier"
 
 # if we want to install via apt
 USER root
-RUN apt-get update && apt-get install -y php-7.1*
+RUN apt-get install ca-certificates apt-transport-https
+RUN wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add -
+RUN echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
+RUN apt-get update && apt-get install -y php7.2
 
 ADD https://getcomposer.org/installer /tmp/install-composer.php
 RUN php /tmp/install-composer.php --no-ansi --install-dir=/usr/bin --filename=composer
